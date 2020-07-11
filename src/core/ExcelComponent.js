@@ -1,4 +1,4 @@
-import { DomListener } from '@core'
+import DomListener from './DomListener'
 
 export default class ExcelComponent extends DomListener {
   /** Return component HTML template */

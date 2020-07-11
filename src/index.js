@@ -1,9 +1,14 @@
-import { Excel } from '@components'
+import { Excel, Header, Toolbar, Formula, Table } from '@components'
 
 import './scss/index.scss'
 
 const excel = new Excel('#app', {
-  components: []
+  components: [
+    Header,
+    Toolbar,
+    Formula,
+    Table
+  ]
 })
 
-console.log('excel', excel)
+excel.render()
