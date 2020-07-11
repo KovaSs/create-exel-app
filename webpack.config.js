@@ -11,8 +11,11 @@ const jSLoaders = () => {
   const loaders = [{
     loader: 'babel-loader',
     options: {
-      'presets': [
+      presets: [
         '@babel/preset-env',
+      ],
+      plugins: [
+        '@babel/plugin-proposal-class-properties',
       ],
     },
   }];
@@ -50,7 +53,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     /** Generate html */
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
+      template: 'assets/index.html',
       minify: {
         collapseWhitespace: isProd,
         removeComments: isProd,
