@@ -8,13 +8,19 @@ function toSell() {
 }
 
 function toColumn(col) {
-  return `<div class="column">${col}</div>`
+  return `
+    <div class="column">
+      ${col}
+      <div class="col-resize"></div>
+    </div>
+  `
 }
 
 function createRow(content, i) {
+  const resize = i ? '<div class="row-resize"></div>' : ''
   return `
     <div class="row">
-      <div class="row-info">${i}</div>
+      <div class="row-info">${i + resize}</div>
       <div class="row-data">${content}</div>
     </div>
   `
