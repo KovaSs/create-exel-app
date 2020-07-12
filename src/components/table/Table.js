@@ -7,12 +7,12 @@ export default class Table extends ExcelComponent {
   constructor($root) {
     super($root, {
       name: 'Table',
-      listeners: [
-        'click',
-        'mousedown',
-        'mouseup',
-        'mousemove',
-      ]
+      // listeners: [
+      //   'click',
+      //   'mousedown',
+      //   'mouseup',
+      //   'mousemove',
+      // ]
     })
   }
 
