@@ -11,16 +11,16 @@ function toColumn(col) {
   return `
     <div class="column">
       ${col}
-      <div class="col-resize"></div>
+      <div class="col-resize" data-resize="col"></div>
     </div>
   `
 }
 
 function createRow(content, i) {
-  const resize = i ? '<div class="row-resize"></div>' : ''
+  const resize = i ? '<div class="row-resize" data-resize="col"></div>' : ''
   return `
     <div class="row">
-      <div class="row-info">${i + resize}</div>
+      <div class="row-info">${(i + resize).trim()}</div>
       <div class="row-data">${content}</div>
     </div>
   `
