@@ -1,4 +1,4 @@
-import { ExcelComponent } from '@core'
+import { ExcelComponent, $ } from '@core'
 import createTable from './table.template'
 
 export default class Table extends ExcelComponent {
@@ -22,11 +22,19 @@ export default class Table extends ExcelComponent {
 
   onMousedown(e) {
     if (e.target.dataset.resize) {
-      console.debug(
-          `${this.name}: onMousedown`,
-          this.$root,
-          e.target
-      )
+      const $resizer = $(e.target)
+      const $parent = $resizer.closest('[data-type="resizable"]')
+      const coords = $parent.getCoords()
+
+      document.onmousemove = (ev) => {
+        const delta = ev.pageX - coords.right
+        const value = coords.width + delta
+        $parent.$el.style.width = `${value}px`
+      }
+
+      document.onmouseup = () => {
+        document.onmousemove = null
+      }
     }
   }
 
