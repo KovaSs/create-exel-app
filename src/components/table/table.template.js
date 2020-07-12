@@ -3,8 +3,8 @@ const CODES = {
   Z: 90
 }
 
-function createSell() {
-  return `<div class="cell selected" contenteditable></div>`
+function toSell() {
+  return `<div class="cell" contenteditable></div>`
 }
 
 function toColumn(col) {
@@ -34,15 +34,14 @@ export default function createTable(rowCount = 15) {
       .map(toColumn)
       .join('')
 
-  const rowCols = new Array(colsCount)
-      .fill('')
-      .map(toColumn)
-      .join('')
-
   rows.push(createRow(cols, ''))
 
   for (let i = 0; i < rowCount; i++) {
-    rows.push(createRow(rowCols, i+1))
+    const sells = new Array(colsCount)
+        .fill('')
+        .map(toSell)
+        .join('')
+    rows.push(createRow(sells, i+1))
   }
   return rows.join('')
 }
