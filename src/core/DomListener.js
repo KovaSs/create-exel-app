@@ -19,8 +19,10 @@ export default class DomListener {
           this.name
         } Component`)
       } else {
-        /** Binded addEventListener for $root and save this */
-        this.$root.on(listener, this[method].bind(this))
+        /** Save -> this */
+        this[method] = this[method].bind(this)
+        /** Binded addEventListener for $root */
+        this.$root.on(listener, this[method])
       }
     })
   }
@@ -35,8 +37,8 @@ export default class DomListener {
           this.name
         } Component`)
       } else {
-        /** Binded addEventListener for $root and save this */
-        this.$root.remove(listener, this[method].bind(this))
+        /** Binded addEventListener for $root */
+        this.$root.off(listener, this[method])
       }
     })
   }
