@@ -19,13 +19,27 @@ export default class DomListener {
           this.name
         } Component`)
       } else {
-        /** Binded addEventListener for $root */
+        /** Binded addEventListener for $root and save this */
         this.$root.on(listener, this[method].bind(this))
       }
     })
   }
 
-  removeDOMListeners() {}
+  removeDOMListeners() {
+    this.listeners.forEach((listener) => {
+      const method = getMethodName(listener)
+      if (!this[method]) {
+        throw new Error(`This ${
+          method
+        } method is not implemented on ${
+          this.name
+        } Component`)
+      } else {
+        /** Binded addEventListener for $root and save this */
+        this.$root.remove(listener, this[method].bind(this))
+      }
+    })
+  }
 }
 
 function getMethodName(eventName) {
