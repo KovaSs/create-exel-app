@@ -3,13 +3,13 @@ const CODES = {
   Z: 90
 }
 
-function toSell() {
-  return `<div class="cell" contenteditable></div>`
+function toSell(_, i) {
+  return `<div class="cell" contenteditable data-col="${i}"></div>`
 }
 
-function toColumn(col) {
+function toColumn(col, i) {
   return `
-    <div class="column" data-type="resizable">
+    <div class="column" data-type="resizable" data-col="${i}">
       ${col}
       <div class="col-resize" data-resize="col"></div>
     </div>
